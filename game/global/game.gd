@@ -51,12 +51,12 @@ func _set_game_started(new_value):
 func _set_score_current(new_value):
 	if is_started:
 		score_current = new_value
-		bonus_time = round(rand_range(1, 3) * 10) / 10
+		self.bonus_time = round(rand_range(1, 3) * 10) / 10
 		emit_signal("score_current_changed")
 
 func _set_bonus_time(new_value):
 	bonus_time = new_value
-	time = bonus_time
+	time += bonus_time
 
 func is_high_score(score):
 	if score > score_best:

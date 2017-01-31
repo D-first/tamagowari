@@ -32,7 +32,7 @@ script/source = "extends TouchScreenButton\n\nvar egg\n\nfunc _ready():\n\tegg =
 [sub_resource type="GDScript" id=3]
 
 resource/name = "time"
-script/source = "extends HBoxContainer\n\nonready var time_value = get_node(\"value\")\nonready var anim = utils.get_main_node().get_node(\"hud/lbl_time_bonus/anim\")\n\n\nfunc _ready():\n#\tgame.connect(\"start_game\", self, \"_on_start_game\")\n\tgame.connect(\"end_game\", self, \"_on_end_game\")\n#\tgame.connect(\"score_current_changed\", self, \"_on_score_current_changed\")\n\tgame.connect(\"time_changed\", self, \"_on_time_changed\")\n\n#func _process(delta):\n#\ttime -= delta\n#\ttime_value.set_text(str((round(time * 10) / 10)))\n#\t\n#\tif time <= 0:\n#\t\ttime_up()\n\n#func _on_start_game():\n#\ttime = TIME_LIMIT\n#\tif !is_processing():\n#\t\tset_process(true)\n\nfunc _on_end_game():\n\ttime_value.set_text(\'0\')\n\n#func _on_score_current_changed():\n#\ttime_bonus()\n\nfunc _on_time_changed():\n\ttime_value.set_text(str(round(game.time * 10) / 10))\n\tpass\n\n#func time_bonus():\n#\ttime += 2\n#\tanim.play(\"time_bonus\")\n#\n#func time_up():\n#\tset_process(false)\n#\ttime_value.set_text(\'0\')\n#\tgame.end_game = true\n#\n#func _on_end_button_pressed():\n#\ttime = 3\n"
+script/source = "extends HBoxContainer\n\nonready var time_value = get_node(\"value\")\nonready var anim = utils.get_main_node().get_node(\"hud/lbl_time_bonus/anim\")\n\n\nfunc _ready():\n\tgame.connect(\"end_game\", self, \"_on_end_game\")\n\tgame.connect(\"time_changed\", self, \"_on_time_changed\")\n\nfunc _on_end_game():\n\ttime_value.set_text(\'0\')\n\nfunc _on_time_changed():\n\ttime_value.set_text(str(round(game.time * 10) / 10))\n\tpass"
 
 [sub_resource type="DynamicFont" id=4]
 
